@@ -1,0 +1,86 @@
+{% extends 'dashboard/dashboard.html' %}
+{% block content %}
+{% load static %}
+<div class="page-header">
+     <h3 class="page-title">
+          College Predictor Results
+     </h3>
+
+</div>
+
+<div class="col-md-12 grid-margin stretch-card">
+     <div class="card">
+          <div class="card-body">
+               <div class="row">
+                    <div class="col-md-6">
+                         <p class="card-description">Prediction was based on
+                         </p>
+                         <div class="table-responsive table-hover">
+                              <table class="table">
+                                   <thead>
+                                        <tr>
+                                             <th> Parameter </th>
+                                             <th> Value </th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        <tr>
+                                             <td>GRE Score</td>
+                                             <td> {{gre}}</td>
+                                        </tr>
+                                        <tr>
+                                             <td>TOEFL Score</td>
+                                             <td> {{toefl}}</td>
+                                        </tr>
+                                        <tr>
+                                             <td>University Rating</td>
+                                             <td> {{u_rating}}</td>
+                                        </tr>
+                                        <tr>
+                                             <td>SOP Strength</td>
+                                             <td> {{sop}}</td>
+                                        </tr>
+                                        <tr>
+                                             <td>LOR Strength</td>
+                                             <td> {{lor}}</td>
+                                        </tr>
+                                        <tr>
+                                             <td>CGPA</td>
+                                             <td> {{cgpa}}</td>
+                                        </tr>
+                                        <tr>
+                                             <td>Research Experience</td>
+                                             <td> {{r_exp}}</td>
+                                        </tr>
+
+                                   </tbody>
+                              </table>
+                         </div>
+
+                    </div>
+                    <div class="col-md-6">
+                         <div class="row" style="height:300px; width:330px; margin-left:100px;"><canvas id="myChart"
+                                   width="20" height="20"></canvas></div>
+                         <br>
+                         <br>
+                         <div class="row">
+                              <div>
+
+                                   <p><strong style="margin-left:230px;" class="display-2">{{prediction}}%</strong> &nbsp;<i style="padding-bottom: 20px;">chances of admission</i></p>
+                              </div>
+                         </div>
+                         <div>
+                              <small style="margin-left:190px;">
+
+                                   Accuracy &nbsp;:&nbsp;{{r2_result}} &nbsp;%
+                              </small>
+
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+<a href="{% url 'collegepredictor' %}" class="btn btn-gradient-primary me-2">Go Back</a>
+<script src="{% static 'js/hey.js' %}"></script>
+{% endblock content %}

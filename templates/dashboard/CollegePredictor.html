@@ -1,0 +1,91 @@
+{% extends 'dashboard/dashboard.html' %}
+{% block content %}
+{% load static %}
+<div class="page-header">
+    <h3 class="page-title">
+        College Predictor
+    </h3>
+</div>
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description">Below details will be used for predicting your chances of
+                admission in UCLA.
+            </p>
+            <form class="forms-sample" action="{% url 'collegepredictor' %}" method="POST">
+                {% csrf_token %}
+
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">GRE
+                        Score</label>
+                    <div class="col-sm-9">
+                        <input required type="text" class="form-control" name="gre"
+                            placeholder="Enter on a scale of 340">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">TOEFL
+                        Score</label>
+                    <div class="col-sm-9">
+                        <input required type="text" class="form-control" name="toefl"
+                            placeholder="Enter on a scale of 120">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">University
+                        Rating</label>
+                    <div class="col-sm-9">
+                        <input required type="text" class="form-control" name="u_rating"
+                            placeholder="Enter on a scale of 5">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">SOP
+                        Strength</label>
+                    <div class="col-sm-9">
+                        <input required type="text" class="form-control" name="sop" placeholder="Enter on a scale of 5">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">LOR
+                        Strength</label>
+                    <div class="col-sm-9">
+                        <input required type="text" class="form-control" name="lor" placeholder="Enter on a scale of 5">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">CGPA</label>
+                    <div class="col-sm-9">
+                        <input required type="text" class="form-control" name="cgpa"
+                            placeholder="Enter on a scale of 10">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Research Experience</label>
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="r_exp" value="1" required> Yes
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="r_exp" value="0" required> No
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="btn btn-gradient-primary me-2">Predict</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</div>
+</div>
+{% endblock content %}

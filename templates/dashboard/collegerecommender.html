@@ -1,0 +1,53 @@
+{% extends 'dashboard/dashboard.html' %}
+{% block content %}
+
+<div class="page-header">
+  <h1 class="page-title">College Recommender System</h1>
+</div>
+
+<div class="col-md-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <p class="card-description">
+        Please enter the below information so that we can suggest the best universities for you!
+      </p>
+      <form class="forms-sample" action="{% url 'collegerecommender' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group row">
+          <label for="exampleInputUsername2" class="col-sm-3 col-form-label">GRE Verbal Score</label>
+          <div class="col-sm-9">
+            <input type="number" min="1" max="170" class="form-control" id="exampleInputUsername2" name="GREV"
+              placeholder="Enter on a scale of 170" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputUsername2" class="col-sm-3 col-form-label">GRE Quantitative Score</label>
+          <div class="col-sm-9">
+            <input type="number" min="1" max="170" class="form-control" id="exampleInputUsername2" name="GREQ"
+              placeholder="Enter on a scale of 170" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputUsername2" class="col-sm-3 col-form-label">GRE Analytical Score</label>
+          <div class="col-sm-9">
+            <input type="number" min="1" max="6" class="form-control" id="exampleInputUsername2" name="GREW"
+              placeholder="Enter on a scale of 6" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Cumulative Undergraduate GPA</label>
+          <div class="col-sm-9">
+            <input type="number" min="1" class="form-control" id="exampleInputUsername2" name="CGPA"
+              placeholder="Enter on a scale of 4" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-gradient-primary me-2">
+          Recommend
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %}
